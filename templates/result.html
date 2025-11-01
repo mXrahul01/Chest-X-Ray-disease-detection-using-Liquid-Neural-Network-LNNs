@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Result</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f4068 1%, #0a192f 99%);
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            color: #ccd6f6;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .navbar {
+            background-color: #112240;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+        }
+        .navbar-brand img {
+            width: 90px;
+            transition: transform 0.2s;
+        }
+        .navbar-brand img:hover {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .card {
+            padding: 35px 30px;
+            border-radius: 18px;
+            background: rgba(17,34,64,0.96);
+            border: 1px solid #223d67;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+        }
+        .card h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 1em;
+            color: #00bcd4;
+            letter-spacing: 1px;
+        }
+        .result-icon {
+            font-size: 5.2rem;
+            color: #00bcd4;
+            margin-bottom: 22px;
+            animation: bounce 1.3s infinite alternate;
+        }
+        @keyframes bounce {
+            to { transform: translateY(-8px) scale(1.06); color: #6ee0f6; }
+        }
+        .btn-custom {
+            background: linear-gradient(90deg, #00bcd4 60%, #1f4068 100%);
+            color: #0a192f;
+            border: none;
+            font-weight: bold;
+            padding: 12px 34px;
+            font-size: 1.09rem;
+            border-radius: 25px;
+            transition: background 0.3s, color 0.2s;
+            margin-bottom: 12px;
+            margin-top: 8px;
+            box-shadow: 0 2px 12px rgba(0,188,212,0.13);
+        }
+        .btn-custom:hover, .btn-custom:focus {
+            background: linear-gradient(90deg, #0097a7 60%, #223d67 100%);
+            color: #fff;
+            box-shadow: 0 4px 18px rgba(0,188,212,0.22);
+        }
+        .results-table {
+            width: 100%;
+            margin-top: 24px;
+            border-collapse: collapse;
+            color: #ccd6f6;
+            font-size: 1.03rem;
+        }
+        .results-table th, .results-table td {
+            padding: 13px 12px;
+            border: 1px solid #1f4068;
+            text-align: left;
+        }
+        .results-table th {
+            background-color: #223d67;
+            color: #00bcd4;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .results-table tr {
+            transition: background 0.22s;
+        }
+        .results-table tr:hover {
+            background-color: #184076;
+        }
+        .final-prediction {
+            font-size: 1.08rem;
+            color: #2ed7cb;
+            font-weight: bold;
+        }
+        .priority-high {
+            color: #ff6b6b;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 12px #5e1727;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        @media (max-width: 768px) {
+            .card { padding: 18px 5px; }
+            .card h1 { font-size: 1.19rem; }
+            .results-table th, .results-table td { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand navbar-dark">
+    <a class="navbar-brand" href="/">
+        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/4c4afc19-b52b-4a44-86e9-abd1c281937e.png" alt="Logo" style="height:52px;">
+    </a>
+</nav>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-11 col-lg-10">
+            <div class="card text-center">
+                <h1>Classification Result</h1>
+                <div class="result-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                </div>
+                <p>All image results have been <strong>saved in a CSV file</strong>.<br>
+                    You can review below and <span style="color:#00bcd4;">download the CSV</span> for further analysis.</p>
+
+                <div class="text-center">
+                    <a href="{{ url_for('static', filename='uploads/results.csv') }}" class="btn btn-custom" download>
+                        <i class="fas fa-download"></i> Download CSV
+                    </a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="results-table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Filename</th>
+                            <th>Model 1 <br>Prediction</th>
+                            <th>Model 1 <br>Confidence</th>
+                            <th>Model 2 <br>Prediction</th>
+                            <th>Model 2 <br>Confidence</th>
+                            <th>Final Prediction</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for result in results %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ result['filename'] }}</td>
+                            <td>{{ result['prediction1'] }}</td>
+                            <td>{{ "%.2f"|format(result['confidence1']) }}</td>
+                            <td>{{ result['prediction2'] }}</td>
+                            <td>{{ "%.2f"|format(result['confidence2']) }}</td>
+                            <td class="final-prediction {% if result['final_priority'] == 'high' or result['final_prediction'] in ['Pneumonia', 'Lung Opacity'] %}priority-high{% endif %}">
+                                {{ result['final_prediction'] }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center" style="margin-top: 20px;">
+                    <a href="/" class="btn btn-custom">
+                        <i class="fas fa-folder-open"></i> Upload Another Folder
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

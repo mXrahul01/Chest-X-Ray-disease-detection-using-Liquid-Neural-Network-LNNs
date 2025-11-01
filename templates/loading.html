@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyzing X-ray Images</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f4068 0%, #0a192f 100%);
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            color: #ccd6f6;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .navbar {
+            background-color: #112240;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        .navbar-brand img {
+            width: 90px;
+            transition: transform 0.2s;
+        }
+        .navbar-brand img:hover {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .card {
+            background: rgba(17,34,64,0.9);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.33);
+            border: 1px solid #223d67;
+            padding: 40px 35px;
+        }
+        .loadwave {
+            display: block;
+            margin: 20px auto 32px auto;
+            width: 90px;
+            height: 90px;
+        }
+        .loadwave circle {
+            stroke: #00bcd4;
+            stroke-width: 8;
+            fill: none;
+            stroke-dasharray: 210;
+            stroke-dashoffset: 150;
+            animation: loadingwave 1.3s infinite linear;
+        }
+        @keyframes loadingwave {
+            0%   { stroke-dashoffset: 210; }
+            50%  { stroke-dashoffset: 60; }
+            100% { stroke-dashoffset: 210; }
+        }
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.7em;
+            letter-spacing: 1px;
+        }
+        .loading-description {
+            font-size: 1.18rem;
+            color: #6ee0f6;
+            margin-top: 18px;
+        }
+        @media (max-width: 768px) {
+            .card {padding: 22px 10px;}
+            .card-title {font-size: 1.3rem;}
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand navbar-dark">
+    <a class="navbar-brand" href="/">
+        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/4c4afc19-b52b-4a44-86e9-abd1c281937e.png" alt="Logo" style="height:52px;">
+    </a>
+</nav>
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 85vh;">
+        <div class="col-md-8">
+            <div class="card text-center">
+                <h1 class="card-title">Analyzing X-ray Images</h1>
+                <!-- Animated loading SVG -->
+                <svg class="loadwave" viewBox="0 0 90 90">
+                    <circle cx="45" cy="45" r="32" />
+                </svg>
+                <div class="loading-description">
+                        <span>
+                            <strong>Please wait</strong> while we process your images.<br>
+                            This may take a few seconds…
+                        </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Automatic JavaScript redirect after 5 sec -->
+<script>
+    setTimeout(function() {
+        window.location.href = "{{ url_for('result') }}";
+    }, 5000);
+</script>
+</body>
+</html>

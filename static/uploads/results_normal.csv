@@ -1,0 +1,4 @@
+Filename,Model 1 Prediction,Model 1 Confidence,Model 2 Prediction,Model 2 Confidence,Final Prediction
+PNEUMONIA_person138_bacteria_657.jpeg,Normal,0.7133910059928894,Lung Opacity,0.6560637354850769,Normal (Confidence: 0.71)
+PNEUMONIA_person14_virus_44.jpeg,Pneumonia,0.5511398911476135,Normal,0.7234027981758118,Normal (Confidence: 0.72)
+PNEUMONIA_person16_virus_47.jpeg,Normal,0.9773371815681458,Normal,0.8256863355636597,Normal (Confidence: 0.98)
