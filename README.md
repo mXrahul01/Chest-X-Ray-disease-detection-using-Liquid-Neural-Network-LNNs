@@ -34,7 +34,7 @@
 <td align="center" width="33%">
 <img src="https://img.icons8.com/fluency/96/workflow.png" alt="Ensemble Icon" width="80"/>
 <h3>🧠 Dual-Model Ensemble</h3>
-<p>Two specialized LNN models (Lung Opacity + Pneumonia) with intelligent fusion for 95.7% accuracy</p>
+<p>Two specialized LNN models (Lung Opacity + Pneumonia) with intelligent fusion for  93–96% accuracy</p>
 </td>
 <td align="center" width="33%">
 <img src="https://img.icons8.com/fluency/96/microsoft-excel-2019.png" alt="Excel Icon" width="80"/>
@@ -75,7 +75,7 @@ This **folder-based batch processing system** leverages **Liquid Neural Networks
 - **🔬 Liquid Neural Networks**: Dynamic adaptive architecture for superior medical imaging performance
 - **📊 Automated Excel Reports**: Detailed analysis with filename, predictions, confidence scores, and risk levels
 - **🎨 Modern Web Interface**: Beautiful glass-morphism UI with real-time progress tracking
-- **🏥 Clinical-Ready**: 95.7% accuracy with 0.97 AUC-ROC validated on 2,000+ test cases
+- **🏥 Clinical-Ready**:  93–96% accuracy with 0.97 AUC-ROC validated on 2,000+ test cases
 - **🔄 Risk-Based Sorting**: Automatic high-to-low risk prioritization for patient triage
 
 ---
@@ -484,12 +484,14 @@ patient_004.jpg,Negative,88.9%,Negative,87.2%,Negative - Normal,88.0%,Low,2025-1
 
 **📊 Architecture Specifications**
 
-- **Type**: Liquid Time-Constant Network
+- **Type**: Liquid Time-Constant Network (LTC) / Liquid Neural Network (LNN)
 - **Framework**: PyTorch 2.0+
 - **Input Size**: 224×224×3 (auto-resized)
-- **Hidden Units**: 512 adaptive neurons
-- **Output**: Binary + confidence (0.0-1.0)
-- **Training Dataset**: NIH Chest X-ray14 (subset)
+- **Hidden Units**: 128 adaptive neurons (liquid neuron layer)
+- **Output**: Binary (Normal / Lung Opacity) + confidence (0.0–1.0)
+- **Optimizer**: Adam (learning rate = 0.001)
+- **Loss Function**: Cross-Entropy Loss
+- **Training Dataset**: NIH Chest X-ray14 (subset)/Synthetic PGGAN Chest X-rays (Kaggle)
 - **Training Duration**: 72 hours on V100 GPU
 - **Batch Processing**: 32 images/pass
 
@@ -498,15 +500,12 @@ patient_004.jpg,Negative,88.9%,Negative,87.2%,Negative - Normal,88.0%,Low,2025-1
 
 **🎯 Performance Metrics**
 
-- **Accuracy**: 92.3%
-- **Precision**: 91.8%
-- **Recall**: 92.7%
-- **F1-Score**: 92.2%
-- **AUC-ROC**: 0.94
-- **Sensitivity**: 93.1%
-- **Specificity**: 91.5%
-- **Processing Speed**: 2.8s per image
-
+- **Accuracy**: 90%
+- **Precision**: 89% (Normal) | 90% (Lung Opacity)
+- **Recall**: 91% (Normal) | 89% (Lung Opacity)
+- **F1-Score**: 0.90
+- **AUC-ROC**: 0.96
+- **Sensitivity**: 90%
 </td>
 </tr>
 </table>
@@ -527,10 +526,12 @@ patient_004.jpg,Negative,88.9%,Negative,87.2%,Negative - Normal,88.0%,Low,2025-1
 
 - **Type**: Liquid Neural Network (ODE-based)
 - **Framework**: PyTorch 2.0+
-- **Input Size**: 224×224×3 (auto-resized)
-- **Hidden Units**: 512 adaptive neurons
-- **Output**: Binary + confidence (0.0-1.0)
-- **Training Dataset**: Kaggle Pneumonia Dataset
+- **Input Size**: 224×224×3 (auto-resized and normalized to [–1, 1])
+- **Hidden Units**: 128 adaptive neurons
+- **Output**: Binary (Normal / Pneumonia) + confidence (0.0–1.0)
+- **Optimizer**: Adam (lr = 0.001)
+- **Loss Function**: Cross-Entropy Loss
+- **Training Dataset**: Synthetic PGGAN Chest X-rays (Kaggle)
 - **Training Duration**: 48 hours on V100 GPU
 - **Batch Processing**: 32 images/pass
 
@@ -539,15 +540,13 @@ patient_004.jpg,Negative,88.9%,Negative,87.2%,Negative - Normal,88.0%,Low,2025-1
 
 **🎯 Performance Metrics**
 
-- **Accuracy**: 94.1%
-- **Precision**: 93.5%
-- **Recall**: 94.6%
-- **F1-Score**: 94.0%
-- **AUC-ROC**: 0.96
-- **Sensitivity**: 95.2%
-- **Specificity**: 93.0%
-- **Processing Speed**: 2.5s per image
-
+- **Accuracy**: 94 %
+- **Precision**: 97 % (Normal) | 89 % (Pneumonia)
+- **Recall**: 95 % (Normal) | 93 % (Pneumonia)
+- **F1-Score**: 0.96 (Normal) | 0.91 (Pneumonia)
+- **AUC-ROC**: 0.98
+- **Sensitivity**: ≈ 94 %
+- **Specificity**: ≈ 93 %
 </td>
 </tr>
 </table>
@@ -579,24 +578,26 @@ Risk Stratification
 
 **📊 Performance**
 
-**Accuracy**: 95.7%
+**Accuracy**: 92%  
+
+**Precision (Weighted)**: 90–93%  
 
 **AUC-ROC**: 0.97
 
-**F1-Score**: 95.0%
+**F1-Score**: 0.92  
 
-**Sensitivity**: 95.8%
+**Sensitivity**: ≈ 93%  
 
 </td>
 <td align="center" width="25%">
 
 **⚡ Batch Speed**
 
-**100 images**: 45-60s
+**100 images**: 1-7s
 
-**500 images**: 3-4 min
+**500 images**: up to 15s
 
-**1000 images**: 7-9 min
+**1000 images**: up to minute
 
 **GPU Required**: Recommended
 
@@ -630,36 +631,24 @@ Risk Stratification
 </div>
 
 | **Metric** | **Lung Opacity Model** | **Pneumonia Model** | **Ensemble System** |
-|:---|:---:|:---:|:---:|
-| **Accuracy** | 92.3% | 94.1% | **95.7%** ✨ |
-| **Precision** | 91.8% | 93.5% | **94.9%** |
-| **Recall** | 92.7% | 94.6% | **95.2%** |
-| **F1-Score** | 92.2% | 94.0% | **95.0%** |
-| **AUC-ROC** | 0.94 | 0.96 | **0.97** 🎯 |
-| **Sensitivity** | 93.1% | 95.2% | **95.8%** |
-| **Specificity** | 91.5% | 93.0% | **94.6%** |
-| **NPV** | 92.3% | 94.1% | **95.3%** |
-| **PPV** | 91.8% | 93.5% | **94.9%** |
+|:----------------|:----------------:|:----------------:|:----------------:|
+| **Accuracy** | 90.0 % | 94.0 % | ** 92%   %** |
+| **Precision** | 89.5 % | 93.0 % | **94.9 %** |
+| **Recall** | 90.8 % | 94.2 % | **95.2 %** |
+| **F1-Score** | 0.90 | 0.93 | **0.95** |
+| **AUC-ROC** | 0.96 | 0.98 | **0.97** 🎯 |
+| **Sensitivity** | 90 % | 94 % | **95.8 %** |
+| **Specificity** | 91 % | 93 % | **94.6 %** |
+| **NPV** | 90.5 % | 93.8 % | **95.3 %** |
+| **PPV** | 89.5 % | 93.0 % | **94.9 %** |
 
 ---
+
 
 <div align="center">
 
-### ⚡ **Bulk Processing Performance**
-
-*Tested on Intel Xeon + NVIDIA V100 GPU*
 
 </div>
-
-| **Batch Size** | **Processing Time** | **Images/Second** | **Memory Usage** | **Recommended** |
-|:---:|:---:|:---:|:---:|:---:|
-| 50 images | 22-28 seconds | ~2.0 images/s | 2.5 GB RAM | ✅ CPU only |
-| 100 images | 45-60 seconds | ~1.8 images/s | 3.2 GB RAM | ✅ CPU/GPU |
-| 500 images | 3-4 minutes | ~2.2 images/s | 4.8 GB RAM | ⚡ GPU recommended |
-| 1000 images | 7-9 minutes | ~1.9 images/s | 6.5 GB RAM | ⚡ GPU required |
-| 2000+ images | 14-18 minutes | ~2.0 images/s | 8.0 GB RAM | ⚡ GPU + batching |
-
----
 
 ## 🖼️ **Screenshots**
 
@@ -893,28 +882,17 @@ Response:
 <tr>
 <td width="50%">
 
-#### 📊 **NIH Chest X-ray14**
+**📊Synthetic PGGAN Chest X-ray Dataset**
 
-- **Source**: [NIH Clinical Center](https://nihcc.app.box.com/v/ChestXray-NIHCC)
-- **Size**: 112,120 frontal-view X-ray images
-- **Classes**: 14 disease categories
-- **Usage**: Lung opacity detection training
-- **Resolution**: Various (resized to 224×224)
-- **Format**: PNG
-- **License**: Public domain
-
-</td>
-<td width="50%">
-
-#### 🦠 **Kaggle Pneumonia Dataset**
-
-- **Source**: [Kaggle](https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia)
-- **Size**: 5,863 chest X-ray images
-- **Classes**: Normal, Bacterial Pneumonia, Viral Pneumonia
-- **Usage**: Pneumonia-specific training
-- **Resolution**: 1024×1024 (resized to 224×224)
-- **Format**: JPEG
-- **License**: CC BY 4.0
+- **Source**: [Kaggle – Synthetic PGGAN Chest X-ray Images](https://www.kaggle.com/datasets/vaibhavkumar2403/synthetic-chest-xray-images)  
+- **Size**: 15,000+ synthetic chest X-ray images  
+- **Classes**: Normal / Pneumonia / Lung Opacity  
+- **Usage**: Used for **training and testing both LNN models** (Normal vs Pneumonia, Normal vs Lung Opacity)  
+- **Resolution**: 224×224 (auto-resized during preprocessing)  
+- **Format**: PNG / JPEG  
+- **Preprocessing**: Grayscale conversion, normalization (−1 to 1), rotation, flipping, and zoom augmentation  
+- **License**: Open Research Dataset (CC BY 4.0 – Academic Use)  
+- **Ethical Note**: Synthetic dataset avoids real patient data privacy concerns while maintaining medical accuracy for AI training.  
 
 </td>
 </tr>
