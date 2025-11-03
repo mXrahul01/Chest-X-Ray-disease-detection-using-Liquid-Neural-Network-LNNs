@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
 <p align="center">
-  <em>A production-ready medical AI platform for automated bulk chest X-ray analysis • Process entire folders with 1000+ images • Clinical-grade ensemble predictions with automated Excel reporting</em>
+  <em>A production-ready medical AI platform for automated bulk chest X-ray analysis • Process entire folders with up to 1000images • Clinical-grade ensemble predictions with automated Excel reporting</em>
 </p>
 
 [📖 Documentation](#-table-of-contents) • [🚀 Quick Start](#-quick-start) • [💡 Features](#-features) • [📊 Performance](#-performance-metrics) • [🤝 Contributing](#-contributing)
@@ -29,7 +29,7 @@
 <td align="center" width="33%">
 <img src="https://img.icons8.com/fluency/96/folder-invoices.png" alt="Folder Icon" width="80"/>
 <h3>📁 Bulk Folder Processing</h3>
-<p>Upload entire folders containing 1000+ chest X-ray images for automated batch analysis</p>
+<p>Upload entire folders containing up to 1000chest X-ray images for automated batch analysis</p>
 </td>
 <td align="center" width="33%">
 <img src="https://img.icons8.com/fluency/96/workflow.png" alt="Ensemble Icon" width="80"/>
@@ -71,7 +71,7 @@ This **folder-based batch processing system** leverages **Liquid Neural Networks
 ### 🎭 **Why Choose This System**
 
 - **📂 Folder-Based Workflow**: Upload entire directories instead of individual files
-- **⚡ High-Throughput Processing**: Handle 1000+ images in minutes (7-9 minutes for 1000 images)
+- **⚡ High-Throughput Processing**: Handle up to 1000images in minutes (7-9 minutes for 1000 images)
 - **🔬 Liquid Neural Networks**: Dynamic adaptive architecture for superior medical imaging performance
 - **📊 Automated Excel Reports**: Detailed analysis with filename, predictions, confidence scores, and risk levels
 - **🎨 Modern Web Interface**: Beautiful glass-morphism UI with real-time progress tracking
@@ -86,7 +86,7 @@ This **folder-based batch processing system** leverages **Liquid Neural Networks
 <summary><b>🎯 Core Capabilities</b></summary>
 <br>
 
-- ✅ **Bulk Folder Upload**: Process entire directories with 1000+ chest X-ray images
+- ✅ **Bulk Folder Upload**: Process entire directories with up to 1000chest X-ray images
 - ✅ **Dual-Model Architecture**: Specialized LNN models for lung opacity and pneumonia detection
 - ✅ **Ensemble Intelligence**: Confidence-weighted fusion for robust clinical predictions
 - ✅ **Automated Excel Generation**: Comprehensive reports with all predictions and metadata
@@ -170,7 +170,7 @@ Liquid Neural Networks utilize **continuous-time differential equations** for dy
 
 ```mermaid
 graph TB
-    A[📁 Folder Upload<br/>1000+ Images] --> B[🔄 Batch Preprocessing]
+    A[📁 Folder Upload<br/>up to 1000Images] --> B[🔄 Batch Preprocessing]
     B --> C[🧠 Model 1: Lung Opacity]
     B --> D[🧠 Model 2: Pneumonia]
     C --> E[📊 Confidence Scores]
@@ -206,7 +206,7 @@ graph TB
 ✅ Python 3.8+
 ✅ pip or conda
 ✅ 8GB+ RAM (recommended for bulk processing)
-✅ GPU (optional but recommended for 1000+ images)
+✅ GPU (optional but recommended for up to 1000images)
 ```
 
 ### 🔧 **Step-by-Step Setup**
@@ -290,7 +290,7 @@ patient_xrays/
 ```
 
 **Supported Formats:** JPEG, PNG, DICOM  
-**Recommended:** 1000+ images per batch for optimal efficiency
+**Recommended:** up to 1000images per batch for optimal efficiency
 
 </td>
 </tr>
@@ -737,7 +737,7 @@ Summary of all predictions with ensemble confidence
 
 <img src="https://github.com/mXrahul01/Chest-X-Ray-disease-detection-using-Liquid-Neural-Network-LNNs/blob/main/Interface/Screenshot%202025-11-03%20143107.png" alt="Excel Report" width="80%"/>
 
-*Automated Excel generation with all 1000+ images sorted by risk level*
+*Automated Excel generation with all up to 1000images sorted by risk level*
 
 </div>
 
