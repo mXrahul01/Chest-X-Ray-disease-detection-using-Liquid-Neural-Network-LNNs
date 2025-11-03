@@ -93,7 +93,7 @@ This **folder-based batch processing system** leverages **Liquid Neural Networks
 - ✅ **Risk Stratification**: Automatic high/medium/low risk classification
 - ✅ **Real-Time Progress**: Live progress bar showing current processing status
 - ✅ **Batch Processing**: Optimized for high-volume screening and diagnostic workflows
-- ✅ **Format Support**: JPEG, PNG, DICOM with automatic preprocessing
+- ✅ **Format Support**: PNG, JPG, JPEG with automatic preprocessing
 
 </details>
 
@@ -289,7 +289,7 @@ patient_xrays/
 └── patient_1000.jpg
 ```
 
-**Supported Formats:** JPEG, PNG, DICOM  
+**Supported Formats:** PNG, JPG, JPEG  
 **Recommended:** up to 1000 images per batch for optimal efficiency
 
 </td>
