@@ -71,7 +71,7 @@ This **folder-based batch processing system** leverages **Liquid Neural Networks
 ### 🎭 **Why Choose This System**
 
 - **📂 Folder-Based Workflow**: Upload entire directories instead of individual files
-- **⚡ High-Throughput Processing**: Handle up to 1000 images in minutes (7-9 minutes for 1000 images)
+- **⚡ High-Throughput Processing**: Handle up to 1000 images in minute up to 1 minute for 1000 images)
 - **🔬 Liquid Neural Networks**: Dynamic adaptive architecture for superior medical imaging performance
 - **📊 Automated Excel Reports**: Detailed analysis with filename, predictions, confidence scores, and risk levels
 - **🎨 Modern Web Interface**: Beautiful glass-morphism UI with real-time progress tracking
