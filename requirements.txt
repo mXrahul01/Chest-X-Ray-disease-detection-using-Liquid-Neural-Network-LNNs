@@ -1,9 +1,10 @@
 Flask
+torch
+torchvision
+Pillow
+werkzeug
+scikit-learn
 numpy
 pandas
-tensorflow        # If your model uses Keras/TensorFlow (.h5 files)
-torch             # If your model uses PyTorch (.pt files)
-openpyxl          # Excel file reading/writing
-scikit-learn      # For ML utils, if used
-werkzeug          # File uploads, if used
-Pillow            # Image processing, if used
+openpyxl
+gunicorn
