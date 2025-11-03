@@ -48,11 +48,13 @@ class LiquidNN(nn.Module):
 model1 = LiquidNN(input_size=224*224, hidden_size=128, output_size=2)
 model2 = LiquidNN(input_size=224*224, hidden_size=128, output_size=2)
 model1.load_state_dict(torch.load(
-    r'C:\Users\rahul\WebstormProjects\Chest-X-Ray-disease-detection-using-Liquid Neural Network(LNNs)\models\liquid_model.pth',
+    'models/liquid_model.pth',
     map_location=torch.device('cpu')))
+
 model2.load_state_dict(torch.load(
-    r'C:\Users\rahul\WebstormProjects\Chest-X-Ray-disease-detection-using-Liquid Neural Network(LNNs)\models\best_model.pth',
+    'models/best_model.pth',
     map_location=torch.device('cpu')))
+
 model1.eval()
 model2.eval()
 
