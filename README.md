@@ -747,70 +747,44 @@ Summary of all predictions with ensemble confidence
 
 ```
 Chest-X-Ray-disease-detection-using-LNN/
+│   app.py
+│   index.js
+│   package.json
+│   README.md
+│   requirements.txt
 │
-├── 📄 app.py                          # Flask application entry point
-├── 📄 requirements.txt                # Python dependencies
-├── 📄 README.md                       # This documentation
-├── 📄 LICENSE                         # MIT License
-├── 📄 .gitignore                      # Git ignore rules
+├───.idea
+│       .gitignore
+│       Chest-X-Ray-disease-detection-using-Liquid Neural Network(LNNs).iml
+│       misc.xml
+│       modules.xml
+│       vcs.xml
 │
-├── 📁 models/                         # Pre-trained model weights
-│   ├── lung_opacity_lnn.pth           # Model 1: 92.3% accuracy
-│   └── pneumonia_lnn.pth              # Model 2: 94.1% accuracy
+├───Interface (Screenshot images here)
+│       image.png
+│       results.csv
+│       Screenshot 2025-11-03 142720.png
+│       Screenshot 2025-11-03 142914.png
+│       Screenshot 2025-11-03 143000.png
+│       Screenshot 2025-11-03 143023.png
+│       Screenshot 2025-11-03 143107.png
+│       Screenshot 2025-11-03 144231.png
 │
-├── 📁 services/                       # Core business logic
-│   ├── __init__.py
-│   ├── model_loader.py                # Model initialization & GPU setup
-│   ├── batch_processor.py             # Bulk processing pipeline
-│   ├── prediction_service.py          # Individual & batch predictions
-│   ├── ensemble_service.py            # Model fusion logic
-│   ├── visualization_service.py       # Chart generation
-│   └── report_generator.py            # Excel report creation
+├───models
+│       best_model.pth
+│       liquid_model.pth
 │
-├── 📁 utils/                          # Utility functions
-│   ├── __init__.py
-│   ├── image_preprocessor.py          # Batch image preprocessing
-│   ├── folder_handler.py              # Directory management
-│   ├── validators.py                  # Input validation
-│   ├── progress_tracker.py            # Real-time progress updates
-│   └── logger.py                      # Logging configuration
+├───static
+│   └───uploads
+│           results.csv
+│           results_disease.csv
+│           results_normal.csv
 │
-├── 📁 static/                         # Frontend assets
-│   ├── 📁 css/
-│   │   ├── styles.css                 # Main stylesheet
-│   │   ├── glass-morphism.css         # Modern UI effects
-│   │   └── animations.css             # Loading animations
-│   ├── 📁 js/
-│   │   ├── main.js                    # Core functionality
-│   │   ├── bulk-upload.js             # Folder upload handler
-│   │   ├── progress-tracker.js        # Real-time updates
-│   │   └── chart-renderer.js          # Visualization
-│   └── 📁 images/
-│       └── logo.png                   # Application logo
-│
-├── 📁 templates/                      # HTML templates
-│   ├── base.html                      # Base template
-│   ├── index.html                     # Dashboard (folder upload)
-│   ├── bulk_processing.html           # Processing progress page
-│   ├── batch_results.html             # Results display
-│   └── error.html                     # Error handling
-│
-├── 📁 uploads/                        # Temporary folder storage
-├── 📁 outputs/                        # Generated Excel reports
-├── 📁 logs/                           # Application logs
-├── 📁 tests/                          # Unit tests
-│   ├── test_models.py
-│   ├── test_batch_processing.py
-│   └── test_api.py
-│
-└── 📁 Interface/                      # Screenshots & demo
-    ├── Screenshot 2025-11-03 142720.png
-    ├── Screenshot 2025-11-03 142914.png
-    ├── Screenshot 2025-11-03 143000.png
-    ├── Screenshot 2025-11-03 143023.png
-    ├── Screenshot 2025-11-03 143107.png
-    ├── Screenshot 2025-11-03 144231.png
-    └── results.csv                    # Sample output
+└───templates
+        index.html
+        loading.html
+        result.html
+        upload.html
 ```
 
 ---
