@@ -775,7 +775,7 @@ Chest-X-Ray-disease-detection-using-LNN/
 │       liquid_model.pth
 │
 ├───static
-│   └───uploads
+│   └───uploads (Downloaded csv.result)
 │           results.csv
 │           results_disease.csv
 │           results_normal.csv
