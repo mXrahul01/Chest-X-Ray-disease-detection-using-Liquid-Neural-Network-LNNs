@@ -200,5 +200,8 @@ def result():
 def uploaded_file(filename):
     return redirect(url_for('static', filename='uploads/' + filename), code=301)
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
+
