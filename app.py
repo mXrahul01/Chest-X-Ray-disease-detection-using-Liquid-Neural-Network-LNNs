@@ -47,13 +47,12 @@ class LiquidNN(nn.Module):
 # Load models (CPU for deployment here)
 model1 = LiquidNN(input_size=224*224, hidden_size=128, output_size=2)
 model2 = LiquidNN(input_size=224*224, hidden_size=128, output_size=2)
-model1.load_state_dict(torch.load(
-    'models/liquid_model.pth',
-    map_location=torch.device('cpu')))
-
-model2.load_state_dict(torch.load(
-    'models/best_model.pth',
-    map_location=torch.device('cpu')))
+try:
+    model1.load_state_dict(torch.load('models/liquid_model.pth', map_location=torch.device('cpu')))
+    model2.load_state_dict(torch.load('models/best_model.pth', map_location=torch.device('cpu')))
+except Exception as e:
+    print("Error loading model:", e)
+    exit(1)
 
 model1.eval()
 model2.eval()
